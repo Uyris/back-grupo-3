@@ -24,11 +24,12 @@ def save_code_to_file(code: str, temp_dir: str):
 # Função para rodar o pytest nos testes
 def run_pytest(test_directory: str) -> str:
     result = subprocess.run(
-            ["pytest", test_directory],
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            text=True
+        ["python", "-m", "pytest", test_directory],  # Alterado para python -m pytest
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True
     )
+
     # Processar a saída do pytest para um feedback mais amigável
     feedback = ""
     if result.returncode == 0:
